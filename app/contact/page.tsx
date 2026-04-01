@@ -57,16 +57,37 @@ export default function ContactPage() {
       </p>
 
       {submitted && (
-        <p
-          className="mt-6 rounded-lg border border-[var(--border-success)] bg-[var(--bg-success)] px-4 py-3 text-[var(--text-success)]"
-          role="status"
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setSubmitted(false)}
         >
-          Thanks — your message has been sent.
-        </p>
+          <div
+            className="relative max-w-md rounded-lg border border-[var(--border-success)] bg-[var(--bg-success)] px-4 py-3 pr-12 text-[var(--text)] shadow-lg"
+            role="status"
+            aria-live="polite"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute top-2 right-2 rounded p-1.5 text-[var(--text-muted)] hover:bg-black/10 hover:text-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-soft)]"
+              aria-label="Close"
+              onClick={() => setSubmitted(false)}
+            >
+              <span className="block text-xl leading-none" aria-hidden>
+                ×
+              </span>
+            </button>
+            <p>Thanks — your message has been sent.</p>
+          </div>
+        </div>
       )}
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-6" noValidate>
-        <ContactFormField id="fullName" label="Full name" error={errors.fullName}>
+        <ContactFormField
+          id="fullName"
+          label="Full name"
+          error={errors.fullName}
+        >
           <input
             id="fullName"
             name="fullName"
