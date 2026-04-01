@@ -8,6 +8,9 @@
   --accent-soft: #c4a84a;
   --sale: #8b2942;
   --border: #ddd6c8;
+  --bg-success: #e6f4ea;
+  --border-success: #a8d4b8;
+  --text-success: #1a472a;
 }
 @theme inline {
   --color-background: var(--bg);

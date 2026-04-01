@@ -58,7 +58,7 @@ export default function ContactPage() {
 
       {submitted && (
         <p
-          className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 text-[var(--text)]"
+          className="mt-6 rounded-lg border border-[var(--border-success)] bg-[var(--bg-success)] px-4 py-3 text-[var(--text-success)]"
           role="status"
         >
           Thanks — your message has been sent.
