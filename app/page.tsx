@@ -20,7 +20,7 @@ export default async function HomePage() {
     return (
       <HomeContent>
         <section className="max-w-6xl mx-auto px-4 py-12">
-          <p className="text-[var(--text-muted)]">
+          <p className="text-(--text-muted)">
             {isServerError
               ? "Our shop is temporarily unavailable. Please try again in a few minutes."
               : "We couldn’t load products. Please try again later."}

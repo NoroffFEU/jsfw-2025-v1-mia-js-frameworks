@@ -29,13 +29,13 @@ export default function ProductCard({
   return (
     <article
       className={`
-        bg-[var(--bg-card)] border-2 border-[var(--border)] overflow-hidden
+        bg-(--bg-card) border-2 border-(--border) overflow-hidden
         ${featured ? "md:col-span-2 md:row-span-1" : ""}
       `}
     >
       <Link
         href={productHref}
-        className={`relative block bg-[var(--border)] ${featured ? "group aspect-[4/3]" : "aspect-square"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2`}
+        className={`relative block bg-(--border) ${featured ? "group aspect-[4/3]" : "aspect-square"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2`}
       >
         {imgUrl ? (
           <Image
@@ -50,12 +50,12 @@ export default function ProductCard({
             sizes={featured ? "(min-width: 768px) 66vw, 100vw" : "50vw"}
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-[var(--text-muted)] text-sm">
+          <div className="absolute inset-0 flex items-center justify-center text-(--text-muted) text-sm">
             No image
           </div>
         )}
         {discountPercent != null && (
-          <span className="absolute top-2 left-2 bg-[var(--sale)] text-white text-xs font-bold uppercase tracking-wide px-2 py-1">
+          <span className="absolute top-2 left-2 bg-(--sale) text-white text-xs font-bold uppercase tracking-wide px-2 py-1">
             −{discountPercent}%
           </span>
         )}
@@ -63,31 +63,31 @@ export default function ProductCard({
       <div className="p-4">
         <Link
           href={productHref}
-          className="block text-inherit no-underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded-sm"
+          className="block text-inherit no-underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 rounded-sm"
         >
           <h3
-            className={`font-bold text-[var(--text)] ${featured ? "text-xl" : "text-base"}`}
+            className={`font-bold text-(--text) ${featured ? "text-xl" : "text-base"}`}
             style={{ fontFamily: "var(--font-bitter), serif" }}
           >
             {product.title}
           </h3>
         </Link>
         {product.description?.trim() && (
-          <p className="mt-6 text-[var(--text-muted)] leading-relaxed whitespace-pre-wrap">
+          <p className="mt-6 text-(--text-muted) leading-relaxed whitespace-pre-wrap">
             {product.description.trim()}
           </p>
         )}
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="text-lg font-bold text-[var(--accent)]">
+          <span className="text-lg font-bold text-(--accent)">
             {formatKr(unitPrice)}
           </span>
           {hasDiscount && (
-            <span className="text-sm text-[var(--text-muted)] line-through">
+            <span className="text-sm text-(--text-muted) line-through">
               {formatKr(product.price)}
             </span>
           )}
           {product.rating != null && (
-            <span className="text-sm text-[var(--text-muted)]">
+            <span className="text-sm text-(--text-muted)">
               ★ {product.rating.toFixed(1)}
             </span>
           )}
@@ -100,7 +100,7 @@ export default function ProductCard({
               product.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-sm bg-[var(--border)] text-[var(--text)] px-2 py-0.5"
+                  className="text-sm bg-(--border) text-(--text) px-2 py-0.5"
                 >
                   {tag}
                 </span>

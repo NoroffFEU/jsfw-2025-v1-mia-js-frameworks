@@ -116,7 +116,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
   if (!products.length) {
     return (
       <section id="products" className="max-w-6xl mx-auto px-4 py-12">
-        <p className="text-[var(--text-muted)]">No products right now.</p>
+        <p className="text-(--text-muted)">No products right now.</p>
       </section>
     );
   }
@@ -130,7 +130,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
   return (
     <section id="products" className="max-w-6xl mx-auto px-4 py-12">
       <h2
-        className="text-2xl font-bold text-[var(--text)] mb-8"
+        className="text-2xl font-bold text-(--text) mb-8"
         style={{ fontFamily: "var(--font-bitter), serif" }}
       >
         Products
@@ -147,14 +147,14 @@ export default function ProductGrid({ products }: ProductGridProps) {
             placeholder="Search products, tags, or try “discount”"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-2 border border-[var(--border)] rounded-md"
+            className="w-full p-2 border border-(--border) rounded-md"
             autoComplete="off"
           />
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <label
             htmlFor="product-sort"
-            className="text-sm text-[var(--text-muted)] whitespace-nowrap"
+            className="text-sm text-(--text-muted) whitespace-nowrap"
           >
             Sort by
           </label>
@@ -162,7 +162,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
             id="product-sort"
             value={sortKey}
             onChange={(e) => setSortKey(e.target.value as SortKey)}
-            className="min-w-[10rem] p-2 border border-[var(--border)] rounded-md bg-[var(--bg-card)] text-[var(--text)]"
+            className="min-w-[10rem] p-2 border border-(--border) rounded-md bg-(--bg-card) text-(--text)"
             aria-label="Sort products"
           >
             <option value="name">Name (A to Z)</option>
@@ -176,7 +176,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
         </div>
       </div>
 
-      <p className="mb-8 text-sm text-[var(--text-muted)]" aria-live="polite">
+      <p className="mb-8 text-sm text-(--text-muted)" aria-live="polite">
         {hasQuery
           ? noMatches
             ? `No products match “${q}”.`

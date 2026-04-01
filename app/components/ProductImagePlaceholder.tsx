@@ -5,7 +5,7 @@ export default function ProductImagePlaceholder({
 }) {
   return (
     <div
-      className={`absolute inset-0 flex items-center justify-center text-[var(--text-muted)] ${className}`}
+      className={`absolute inset-0 flex items-center justify-center text-(--text-muted) ${className}`}
     >
       No image
     </div>

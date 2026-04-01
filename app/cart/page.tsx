@@ -20,32 +20,32 @@ function LinePricing({ line }: { line: CartLine }) {
   return (
     <div className="mt-1 space-y-0.5 text-sm">
       <div className="space-y-0.5 sm:hidden">
-        <p className="text-[var(--text-muted)]">
+        <p className="text-(--text-muted)">
           {formatKr(line.unitPrice)} × {line.quantity}
         </p>
-        <p className="font-semibold text-[var(--text)]">{formatKr(subtotal)}</p>
+        <p className="font-semibold text-(--text)">{formatKr(subtotal)}</p>
         {hasDiscount && saved > 0 && (
-          <p className="text-xs font-medium text-[var(--sale)]">
+          <p className="text-xs font-medium text-(--sale)">
             Save {formatKr(saved)}
           </p>
         )}
       </div>
       <div className="hidden space-y-0.5 sm:block">
-        <p className="text-[var(--text-muted)]">
+        <p className="text-(--text-muted)">
           {formatKr(line.unitPrice)} each × {line.quantity}
         </p>
-        <p className="font-semibold text-[var(--text)]">
+        <p className="font-semibold text-(--text)">
           Line total: {formatKr(subtotal)}
         </p>
         {hasDiscount && (
-          <p className="text-[var(--text-muted)]">
+          <p className="text-(--text-muted)">
             <span className="line-through">
               {formatKr(list * line.quantity)}
             </span>
           </p>
         )}
         {saved > 0 && (
-          <p className="font-medium text-[var(--sale)]">
+          <p className="font-medium text-(--sale)">
             You save {formatKr(saved)} on this item
           </p>
         )}
@@ -69,12 +69,9 @@ export default function CartPage() {
   if (!lines.length) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <h1 className="text-2xl font-bold text-[var(--text)]">Cart</h1>
-        <p className="mt-4 text-[var(--text-muted)]">No items in cart.</p>
-        <Link
-          href="/"
-          className="mt-4 inline-block text-[var(--accent)] underline"
-        >
+        <h1 className="text-2xl font-bold text-(--text)">Cart</h1>
+        <p className="mt-4 text-(--text-muted)">No items in cart.</p>
+        <Link href="/" className="mt-4 inline-block text-(--accent) underline">
           Continue shopping
         </Link>
       </div>
@@ -85,14 +82,12 @@ export default function CartPage() {
     <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--text)]">Cart</h1>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">
-            {itemCount} items
-          </p>
+          <h1 className="text-2xl font-bold text-(--text)">Cart</h1>
+          <p className="mt-1 text-sm text-(--text-muted)">{itemCount} items</p>
         </div>
         <button
           type="button"
-          className="shrink-0 rounded border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2 text-sm font-medium text-[var(--text)] transition-colors hover:bg-[var(--border)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)]"
+          className="shrink-0 rounded border border-(--border) bg-(--bg-card) px-3 py-2 text-sm font-medium text-(--text) transition-colors hover:bg-(--border) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
           onClick={() => {
             clearCart();
             showToast("Cart emptied");
@@ -105,13 +100,13 @@ export default function CartPage() {
         {lines.map((line) => (
           <li
             key={line.id}
-            className="flex flex-col gap-4 border border-[var(--border)] bg-[var(--bg-card)] p-4 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4"
+            className="flex flex-col gap-4 border border-(--border) bg-(--bg-card) p-4 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4"
           >
             <Link
               href={`/product/${line.id}`}
-              className="group flex min-w-0 gap-4 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)] sm:flex-1 sm:items-start"
+              className="group flex min-w-0 gap-4 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text) sm:flex-1 sm:items-start"
             >
-              <div className="relative h-24 w-24 shrink-0 overflow-hidden bg-[var(--border)]">
+              <div className="relative h-24 w-24 shrink-0 overflow-hidden bg-(--border)">
                 {line.imageUrl ? (
                   <Image
                     src={line.imageUrl}
@@ -121,23 +116,23 @@ export default function CartPage() {
                     sizes="96px"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-xs text-[var(--text-muted)]">
+                  <div className="flex h-full w-full items-center justify-center text-xs text-(--text-muted)">
                     No image
                   </div>
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="font-semibold text-[var(--text)] underline-offset-2 group-hover:underline">
+                <p className="font-semibold text-(--text) underline-offset-2 group-hover:underline">
                   {line.title}
                 </p>
                 <LinePricing line={line} />
               </div>
             </Link>
-            <div className="flex w-full shrink-0 items-center justify-between gap-3 border-t border-[var(--border)] pt-3 sm:w-auto sm:border-t-0 sm:pt-0">
+            <div className="flex w-full shrink-0 items-center justify-between gap-3 border-t border-(--border) pt-3 sm:w-auto sm:border-t-0 sm:pt-0">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="min-h-11 min-w-11 rounded border border-[var(--border)] text-[var(--text)] transition-colors hover:bg-[var(--border)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)]"
+                  className="min-h-11 min-w-11 rounded border border-(--border) text-(--text) transition-colors hover:bg-(--border) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
                   aria-label="Decrease quantity"
                   onClick={() => setQuantity(line.id, line.quantity - 1)}
                 >
@@ -148,7 +143,7 @@ export default function CartPage() {
                 </span>
                 <button
                   type="button"
-                  className="min-h-11 min-w-11 rounded border border-[var(--border)] text-[var(--text)] transition-colors hover:bg-[var(--border)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)]"
+                  className="min-h-11 min-w-11 rounded border border-(--border) text-(--text) transition-colors hover:bg-(--border) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
                   aria-label="Increase quantity"
                   onClick={() => setQuantity(line.id, line.quantity + 1)}
                 >
@@ -157,7 +152,7 @@ export default function CartPage() {
               </div>
               <button
                 type="button"
-                className="shrink-0 text-[var(--accent)] underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)]"
+                className="shrink-0 text-(--accent) underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
                 onClick={() => {
                   removeLine(line.id);
                   showToast(`Removed ${line.title} from cart`);
@@ -169,20 +164,20 @@ export default function CartPage() {
           </li>
         ))}
       </ul>
-      <div className="mt-8 flex flex-col gap-4 border-t border-[var(--border)] pt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+      <div className="mt-8 flex flex-col gap-4 border-t border-(--border) pt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
         <div className="space-y-1">
           {totalSavings > 0 && (
-            <p className="text-lg font-semibold text-[var(--sale)]">
+            <p className="text-lg font-semibold text-(--sale)">
               Total saved: {formatKr(totalSavings)}
             </p>
           )}
-          <p className="text-xl font-bold text-[var(--text)]">
+          <p className="text-xl font-bold text-(--text)">
             Order total: {formatKr(total)}
           </p>
         </div>
         <Link
           href="/checkout/success"
-          className="inline-flex items-center justify-center bg-[var(--accent)] px-4 py-2 font-semibold text-white transition-colors hover:bg-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text)]"
+          className="inline-flex items-center justify-center bg-(--accent) px-4 py-2 font-semibold text-white transition-colors hover:bg-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
         >
           Checkout
         </Link>

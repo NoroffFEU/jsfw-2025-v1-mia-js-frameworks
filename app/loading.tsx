@@ -2,7 +2,7 @@
 function Pulse({ className }: { className: string }) {
   return (
     <div
-      className={`animate-pulse rounded-md bg-[var(--border)] ${className}`}
+      className={`animate-pulse rounded-md bg-(--border) ${className}`}
       aria-hidden
     />
   );
@@ -11,12 +11,12 @@ function Pulse({ className }: { className: string }) {
 function ProductCardSkeleton({ featured = false }: { featured?: boolean }) {
   return (
     <article
-      className={`bg-[var(--bg-card)] border-2 border-[var(--border)] overflow-hidden ${
+      className={`bg-(--bg-card) border-2 border-(--border) overflow-hidden ${
         featured ? "md:col-span-2" : ""
       }`}
     >
       <div
-        className={`relative bg-[var(--border)] ${
+        className={`relative bg-(--border) ${
           featured ? "aspect-[4/3]" : "aspect-square"
         }`}
       >
@@ -45,7 +45,7 @@ function ProductCardSkeleton({ featured = false }: { featured?: boolean }) {
 export function HomeLoading() {
   return (
     <>
-      <section className="border-b-2 border-[var(--border)] bg-[var(--bg-card)]">
+      <section className="border-b-2 border-(--border) bg-(--bg-card)">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <Pulse className="h-9 w-48" />
           <Pulse className="mt-3 h-5 w-64 max-w-full" />

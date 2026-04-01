@@ -8,18 +8,18 @@ import {
 type Variant = "card" | "detail";
 
 const priceClass: Record<Variant, string> = {
-  card: "text-lg font-bold text-[var(--accent)]",
-  detail: "text-2xl font-bold text-[var(--accent)]",
+  card: "text-lg font-bold text-(--accent)",
+  detail: "text-2xl font-bold text-(--accent)",
 };
 
 const listClass: Record<Variant, string> = {
-  card: "text-sm text-[var(--text-muted)] line-through",
-  detail: "text-lg text-[var(--text-muted)] line-through",
+  card: "text-sm text-(--text-muted) line-through",
+  detail: "text-lg text-(--text-muted) line-through",
 };
 
 const ratingClass: Record<Variant, string> = {
-  card: "text-sm text-[var(--text-muted)]",
-  detail: "text-[var(--text-muted)]",
+  card: "text-sm text-(--text-muted)",
+  detail: "text-(--text-muted)",
 };
 
 export default function ProductPriceRow({

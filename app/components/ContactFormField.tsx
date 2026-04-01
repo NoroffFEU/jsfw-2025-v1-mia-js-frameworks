@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export const contactInputClass =
-  "mt-1 w-full rounded-md border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2 text-[var(--text)] outline-none focus:ring-2 focus:ring-[var(--accent-soft)]";
+  "mt-1 w-full rounded-md border border-(--border) bg-(--bg-card) px-3 py-2 text-(--text) outline-none focus:ring-2 focus:ring-(--accent-soft)";
 
 export const contactTextareaClass = `${contactInputClass} resize-y`;
 
@@ -20,13 +20,13 @@ export default function ContactFormField({
     <div>
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-[var(--text)]"
+        className="block text-sm font-medium text-(--text)"
       >
         {label}
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-sm text-[var(--sale)]">
+        <p id={`${id}-error`} className="mt-1 text-sm text-(--sale)">
           {error}
         </p>
       )}

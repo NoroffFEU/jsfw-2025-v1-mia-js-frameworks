@@ -17,17 +17,17 @@ export default function CheckoutSuccessPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-16 text-center">
       <h1
-        className="text-3xl font-bold text-[var(--text)]"
+        className="text-3xl font-bold text-(--text)"
         style={{ fontFamily: "var(--font-bitter), serif" }}
       >
         Thank you for your order!
       </h1>
-      <p className="text-lg text-[var(--text-muted)] mt-4 max-w-md mx-auto">
+      <p className="text-lg text-(--text-muted) mt-4 max-w-md mx-auto">
         Your order has been placed successfully.
       </p>
       <Link
         href="/"
-        className="inline-block mt-8 text-[var(--accent)] font-semibold underline"
+        className="inline-block mt-8 text-(--accent) font-semibold underline"
       >
         Home
       </Link>

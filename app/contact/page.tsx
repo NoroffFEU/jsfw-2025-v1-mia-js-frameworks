@@ -47,12 +47,12 @@ export default function ContactPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
       <h1
-        className="text-3xl font-bold text-[var(--text)]"
+        className="text-3xl font-bold text-(--text)"
         style={{ fontFamily: "var(--font-bitter), serif" }}
       >
         Contact us
       </h1>
-      <p className="text-[var(--text-muted)] mt-2">
+      <p className="text-(--text-muted) mt-2">
         Send us a message and we&apos;ll get back to you.
       </p>
 
@@ -62,14 +62,14 @@ export default function ContactPage() {
           onClick={() => setSubmitted(false)}
         >
           <div
-            className="relative max-w-md rounded-lg border border-[var(--border-success)] bg-[var(--bg-success)] px-4 py-3 pr-12 text-[var(--text)] shadow-lg"
+            className="relative max-w-md rounded-lg border border-(--border-success) bg-(--bg-success) px-4 py-3 pr-12 text-(--text) shadow-lg"
             role="status"
             aria-live="polite"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
-              className="absolute top-2 right-2 rounded p-1.5 text-[var(--text-muted)] hover:bg-black/10 hover:text-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-soft)]"
+              className="absolute top-2 right-2 rounded p-1.5 text-(--text-muted) hover:bg-black/10 hover:text-(--text) focus:outline-none focus:ring-2 focus:ring-(--accent-soft)"
               aria-label="Close"
               onClick={() => setSubmitted(false)}
             >
@@ -155,7 +155,7 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="rounded-md bg-[var(--accent)] px-5 py-2.5 font-semibold text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--accent-soft)]"
+          className="rounded-md bg-(--accent) px-5 py-2.5 font-semibold text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-(--accent-soft)"
         >
           Send message
         </button>

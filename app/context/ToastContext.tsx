@@ -33,7 +33,7 @@ function ToastHost({ toasts }: { toasts: ToastItem[] }) {
       {toasts.map((t) => (
         <div
           key={t.id}
-          className="border-2 border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 text-[var(--text)] shadow-lg"
+          className="border-2 border-(--border) bg-(--bg-card) px-4 py-3 text-(--text) shadow-lg"
         >
           {t.message}
         </div>
