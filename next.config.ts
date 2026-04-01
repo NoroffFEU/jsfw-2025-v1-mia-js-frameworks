@@ -1,10 +1,9 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**.noroff.dev", pathname: "/**" },
-      // add the exact API image host if different
     ],
   },
 };

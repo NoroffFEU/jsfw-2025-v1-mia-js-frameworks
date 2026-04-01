@@ -4,19 +4,23 @@ interface HomeContentProps {
 
 export default function HomeContent({ children }: HomeContentProps) {
   return (
-    <main>
-      <header className="border-b-2 border-[var(--border)] bg-[var(--bg-card)]">
+    <>
+      <section
+        className="border-b-2 border-[var(--border)] bg-[var(--bg-card)]"
+        aria-labelledby="home-heading"
+      >
         <div className="max-w-6xl mx-auto px-4 py-8">
           <h1
+            id="home-heading"
             className="text-3xl font-bold text-[var(--text)]"
             style={{ fontFamily: "var(--font-bitter), serif" }}
           >
-            Shop
+            Loot Locker
           </h1>
           <p className="text-[var(--text-muted)] mt-1">Browse what we have.</p>
         </div>
-      </header>
+      </section>
       {children}
-    </main>
+    </>
   );
 }

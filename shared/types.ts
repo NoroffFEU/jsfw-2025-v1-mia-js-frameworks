@@ -22,7 +22,6 @@ export interface Product {
   reviews?: Review[];
 }
 
-// Response shapes from the Noroff API
 export interface ProductResponse {
   data: Product[];
 }
@@ -31,7 +30,6 @@ export interface SingleProductResponse {
   data: Product;
 }
 
-// Custom error used in shared/api.ts
 export class ApiError extends Error {
   status: number;
   body: string;
