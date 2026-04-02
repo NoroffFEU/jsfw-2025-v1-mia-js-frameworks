@@ -1,5 +1,9 @@
 # Loot Locker
 
+![Loot Locker — home page](docs/frontpage.png)
+
+A small storefront built for a JavaScript frameworks assignment.
+
 A small storefront built for a JavaScript frameworks assignment. It pulls products from the Noroff public API, lets people browse and sort them, add items to a cart, and walk through a simple “checkout” that ends on a thank-you page. There’s also a contact form with client-side validation—handy for demonstrating form handling without wiring up a real mail server.
 
 If you’re grading this or just trying to run it locally, everything you need should be below.
