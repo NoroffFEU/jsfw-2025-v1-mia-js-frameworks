@@ -1,6 +1,6 @@
 # Loot Locker
 
-![Loot Locker — home page](docs/frontpage.png)
+![Loot Locker — home page](app/docs/frontpage.png)
 
 A small storefront built for a JavaScript frameworks assignment.
 
