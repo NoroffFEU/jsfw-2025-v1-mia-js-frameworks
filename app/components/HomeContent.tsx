@@ -12,8 +12,8 @@ export default function HomeContent({ children }: HomeContentProps) {
         <div className="max-w-6xl mx-auto px-4 py-8">
           <h1
             id="home-heading"
-            className="text-3xl font-bold text-(--text)"
-            style={{ fontFamily: "var(--font-bitter), serif" }}
+            className="text-3xl font-bold text-(--text) font-heading"
+
           >
             Loot Locker
           </h1>

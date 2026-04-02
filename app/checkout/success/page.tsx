@@ -17,8 +17,8 @@ export default function CheckoutSuccessPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-16 text-center">
       <h1
-        className="text-3xl font-bold text-(--text)"
-        style={{ fontFamily: "var(--font-bitter), serif" }}
+        className="text-3xl font-heading font-bold text-(--text)"
+
       >
         Thank you for your order!
       </h1>

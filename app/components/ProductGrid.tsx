@@ -130,8 +130,8 @@ export default function ProductGrid({ products }: ProductGridProps) {
   return (
     <section id="products" className="max-w-6xl mx-auto px-4 py-12">
       <h2
-        className="text-2xl font-bold text-(--text) mb-8"
-        style={{ fontFamily: "var(--font-bitter), serif" }}
+        className="text-2xl font-bold text-(--text) mb-8 font-heading"
+
       >
         Products
       </h2>

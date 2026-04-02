@@ -66,8 +66,8 @@ export default function ProductCard({
           className="block text-inherit no-underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 rounded-sm"
         >
           <h3
-            className={`font-bold text-(--text) ${featured ? "text-xl" : "text-base"}`}
-            style={{ fontFamily: "var(--font-bitter), serif" }}
+            className={`font-bold font-heading text-(--text) ${featured ? "text-xl" : "text-base"}`}
+
           >
             {product.title}
           </h3>

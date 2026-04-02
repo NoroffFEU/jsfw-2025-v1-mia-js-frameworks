@@ -42,7 +42,10 @@ export default async function ProductPage({ params }: Props) {
   try {
     product = await fetchProductById(id);
   } catch (e) {
-    if (e instanceof ApiError && e.status === 404) notFound();
+  if (e instanceof ApiError && e.status === 404) notFound();
+  if (!(e instanceof ApiError)) {
+    console.error("Unexpected error loading product", e);
+  }
     return (
       <div className="max-w-6xl mx-auto px-4 py-12">
         <p className="text-(--text-muted)">
@@ -85,8 +88,8 @@ export default async function ProductPage({ params }: Props) {
 
         <div>
           <h1
-            className="text-3xl font-bold text-(--text) md:text-4xl"
-            style={{ fontFamily: "var(--font-bitter), serif" }}
+            className="text-3xl font-bold text-(--text) md:text-4xl font-heading"
+
           >
             {product.title}
           </h1>
@@ -121,8 +124,8 @@ export default async function ProductPage({ params }: Props) {
       {product.reviews && product.reviews.length > 0 && (
         <section className="mt-12 border-t border-(--border) pt-10">
           <h2
-            className="text-xl font-bold text-(--text)"
-            style={{ fontFamily: "var(--font-bitter), serif" }}
+            className="text-xl font-bold text-(--text) font-heading"
+
           >
             Reviews
           </h2>

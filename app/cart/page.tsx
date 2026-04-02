@@ -8,7 +8,7 @@ import {
   lineSavings,
   type CartLine,
 } from "@/app/context/CartContext";
-import { useToast } from "../context/ToastContext";
+import { useToast } from "@/app/context/ToastContext";
 import { formatKr } from "@/shared/format";
 
 function LinePricing({ line }: { line: CartLine }) {

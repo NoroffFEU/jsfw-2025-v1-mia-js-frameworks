@@ -47,8 +47,8 @@ export default function ContactPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
       <h1
-        className="text-3xl font-bold text-(--text)"
-        style={{ fontFamily: "var(--font-bitter), serif" }}
+        className="text-3xl font-heading font-bold text-(--text)"
+
       >
         Contact us
       </h1>
