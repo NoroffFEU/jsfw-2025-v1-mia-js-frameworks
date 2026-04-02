@@ -51,7 +51,7 @@ body {
 
 .header {
   --surface: var(--bg-card);
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   color: var(--text);
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -62,7 +62,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  max-width: 80rem;
+  max-width: 72rem;
   margin: 0 auto;
   min-height: 3.5rem;
   position: relative;
