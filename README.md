@@ -4,7 +4,13 @@
 
 A small storefront built for a JavaScript frameworks assignment. It pulls products from the Noroff public API, lets people browse and sort them, add items to a cart, and walk through a simple “checkout” that ends on a thank-you page. There’s also a contact form with client-side validation—handy for demonstrating form handling without wiring up a real mail server.
 
-If you’re grading this or just trying to run it locally, everything you need should be below.
+**Features:**
+
+- Product listing with search & sorting
+- Dynamic product pages
+- Client-side cart with persistence
+- Checkout flow
+- Contact form with validation
 
 ## What’s in the box
 
@@ -77,6 +83,11 @@ Remote product images are allowed for `**.noroff.dev` in `next.config.ts`.
 ## API
 
 Product data comes from the **Noroff v2 API** (`/online-shop` and `/online-shop/:id`). If the home page can’t load products, the user sees a friendly message; 404 on a product detail page uses Next’s `notFound()` where appropriate.
+
+## Known issues / limitations
+
+- **No real payments** — That’s deliberate for this assignment; checkout is a confirmation page only.
+- **Contact form** — Validation and success handling are client-side only; there’s no server endpoint, email relay, or persisted submissions.
 
 ---
 
