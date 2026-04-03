@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# personal
-CODE_GUIDE.MD
+# personal / local guides (CODE_GUIDE.md, nav.md, etc.)
+/guides/

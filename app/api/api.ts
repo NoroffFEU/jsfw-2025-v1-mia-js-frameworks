@@ -1,9 +1,10 @@
+import { cache } from "react";
 import {
   Product,
   ProductResponse,
   SingleProductResponse,
   ApiError,
-} from "./types";
+} from "../components/shared/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://v2.api.noroff.dev";
 
@@ -29,12 +30,12 @@ async function fetchApi<T>(path: string, options?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export async function fetchProducts(): Promise<Product[]> {
+export const fetchProducts = cache(async (): Promise<Product[]> => {
   const response = await fetchApi<ProductResponse>("/online-shop");
   return response.data;
-}
+});
 
-export async function fetchProductById(id: string): Promise<Product> {
+export const fetchProductById = cache(async (id: string): Promise<Product> => {
   const response = await fetchApi<SingleProductResponse>(`/online-shop/${id}`);
   return response.data;
-}
+});

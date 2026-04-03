@@ -1,0 +1,162 @@
+"use client";
+
+import { useState } from "react";
+import {
+  validateContactForm,
+  isContactFormValid,
+  type ContactFormValues,
+  type ContactFieldErrors,
+} from "@/app/services/contactValidation";
+import ContactFormField, {
+  contactInputClassForError,
+  contactTextareaClassForError,
+} from "@/app/components/ContactFormField";
+
+const initialValues: ContactFormValues = {
+  fullName: "",
+  subject: "",
+  email: "",
+  message: "",
+};
+
+export default function ContactPage() {
+  const [values, setValues] = useState<ContactFormValues>(initialValues);
+  const [errors, setErrors] = useState<ContactFieldErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const next = validateContactForm(values);
+    setErrors(next);
+    if (!isContactFormValid(next)) {
+      setSubmitted(false);
+      return;
+    }
+    setSubmitted(true);
+    setValues(initialValues);
+    setErrors({});
+  }
+
+  function handleFieldChange<K extends keyof ContactFormValues>(
+    field: K,
+    value: ContactFormValues[K],
+  ) {
+    setValues((v) => {
+      const next = { ...v, [field]: value };
+      setErrors(validateContactForm(next));
+      return next;
+    });
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto px-4 py-12">
+      <h1 className="text-3xl font-heading font-bold text-(--text)">
+        Contact us
+      </h1>
+      <p className="text-(--text-muted) mt-2">
+        Send us a message and we&apos;ll get back to you.
+      </p>
+
+      {submitted && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setSubmitted(false)}
+        >
+          <div
+            className="relative max-w-md rounded-lg border border-(--border-success) bg-(--bg-success) px-4 py-3 pr-12 text-(--text) shadow-lg"
+            role="status"
+            aria-live="polite"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute top-2 right-2 rounded p-1.5 text-(--text-muted) hover:bg-black/10 hover:text-(--text) focus:outline-none focus:ring-2 focus:ring-(--accent-soft)"
+              aria-label="Close"
+              onClick={() => setSubmitted(false)}
+            >
+              <span className="block text-xl leading-none" aria-hidden>
+                ×
+              </span>
+            </button>
+            <p>Thanks — your message has been sent.</p>
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="mt-8 space-y-6" noValidate>
+        <ContactFormField
+          id="fullName"
+          label="Full name"
+          error={errors.fullName}
+        >
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            autoComplete="name"
+            value={values.fullName}
+            onChange={(e) => {
+              handleFieldChange("fullName", e.target.value);
+            }}
+            aria-invalid={Boolean(errors.fullName)}
+            aria-describedby={errors.fullName ? "fullName-error" : undefined}
+            className={contactInputClassForError(Boolean(errors.fullName))}
+          />
+        </ContactFormField>
+
+        <ContactFormField id="subject" label="Subject" error={errors.subject}>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            value={values.subject}
+            onChange={(e) => {
+              handleFieldChange("subject", e.target.value);
+            }}
+            aria-invalid={Boolean(errors.subject)}
+            aria-describedby={errors.subject ? "subject-error" : undefined}
+            className={contactInputClassForError(Boolean(errors.subject))}
+          />
+        </ContactFormField>
+
+        <ContactFormField id="email" label="Email" error={errors.email}>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            value={values.email}
+            onChange={(e) => {
+              handleFieldChange("email", e.target.value);
+            }}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className={contactInputClassForError(Boolean(errors.email))}
+          />
+        </ContactFormField>
+
+        <ContactFormField id="message" label="Message" error={errors.message}>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={values.message}
+            onChange={(e) => {
+              handleFieldChange("message", e.target.value);
+            }}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className={contactTextareaClassForError(Boolean(errors.message))}
+          />
+        </ContactFormField>
+
+        <button
+          type="submit"
+          className="rounded-md bg-(--accent) px-5 py-2.5 font-semibold text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-(--accent-soft)"
+        >
+          Send message
+        </button>
+      </form>
+    </div>
+  );
+}
