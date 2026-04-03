@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Product } from "@/shared/types";
+import type { Product } from "@/app/components/shared/types";
 import {
   productHasDiscount,
   productEffectiveUnitPrice,
   productDiscountPercent,
-} from "@/shared/productPricing";
+} from "@/app/components/shared/productPricing";
 import ProductCard from "./ProductCard";
 
 interface ProductGridProps {
@@ -115,7 +115,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
   if (!products.length) {
     return (
-      <section id="products" className="max-w-6xl mx-auto px-4 py-12">
+      <section id="products" className="max-w-6xl mx-auto px-4 py-8">
         <p className="text-(--text-muted)">No products right now.</p>
       </section>
     );
@@ -128,12 +128,12 @@ export default function ProductGrid({ products }: ProductGridProps) {
   const [first, ...rest] = filteredSorted;
 
   return (
-    <section id="products" className="max-w-6xl mx-auto px-4 py-12">
-      <h2
-        className="text-2xl font-bold text-(--text) mb-8 font-heading"
-
-      >
-        Products
+    <section id="products" className="max-w-6xl mx-auto px-4 py-6">
+      <h2 className="text-2xl font-bold text-(--text) mb-6 font-heading flex flex-wrap items-baseline gap-2">
+        <span>Products</span>
+        <span className="text-base font-normal text-(--text-muted)">
+          {products.length} product{products.length === 1 ? "" : "s"}
+        </span>
       </h2>
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="w-full sm:flex-1 min-w-0">
@@ -176,13 +176,13 @@ export default function ProductGrid({ products }: ProductGridProps) {
         </div>
       </div>
 
-      <p className="mb-8 text-sm text-(--text-muted)" aria-live="polite">
-        {hasQuery
-          ? noMatches
+      {hasQuery ? (
+        <p className="mb-8 text-sm text-(--text-muted)" aria-live="polite">
+          {noMatches
             ? `No products match “${q}”.`
-            : `${filteredSorted.length} product${filteredSorted.length === 1 ? "" : "s"} found`
-          : `${products.length} product${products.length === 1 ? "" : "s"}`}
-      </p>
+            : `${filteredSorted.length} product${filteredSorted.length === 1 ? "" : "s"} found`}
+        </p>
+      ) : null}
       {noMatches ? null : (
         <div
           id="product-grid"

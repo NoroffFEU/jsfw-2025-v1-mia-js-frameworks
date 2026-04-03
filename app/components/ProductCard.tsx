@@ -1,14 +1,15 @@
 "use client";
 import Link from "next/link";
-import type { Product } from "@/shared/types";
+import type { Product } from "@/app/components/shared/types";
 import Image from "next/image";
-import { formatKr } from "@/shared/format";
+import { formatKr, formatStarRating } from "@/app/components/shared/format";
 import AddToCartButton from "@/app/components/AddToCartButton";
 import {
   productDiscountPercent,
   productEffectiveUnitPrice,
   productHasDiscount,
-} from "@/shared/productPricing";
+} from "@/app/components/shared/productPricing";
+
 
 interface ProductCardProps {
   product: Product;
@@ -44,7 +45,7 @@ export default function ProductCard({
             fill
             className={
               featured
-                ? "object-cover transition-[object-fit] duration-300 ease-out group-hover:object-contain"
+                ? "object-contain ease-in-out group-hover:object-cover"
                 : "object-cover"
             }
             sizes={featured ? "(min-width: 768px) 66vw, 100vw" : "50vw"}
@@ -67,7 +68,6 @@ export default function ProductCard({
         >
           <h3
             className={`font-bold font-heading text-(--text) ${featured ? "text-xl" : "text-base"}`}
-
           >
             {product.title}
           </h3>
@@ -88,7 +88,7 @@ export default function ProductCard({
           )}
           {product.rating != null && (
             <span className="text-sm text-(--text-muted)">
-              ★ {product.rating.toFixed(1)}
+              Buyer rating: {formatStarRating(product.rating)}
             </span>
           )}
         </div>

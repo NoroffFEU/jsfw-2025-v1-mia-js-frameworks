@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/app/components/Header";
 import { CartProvider } from "@/app/context/CartContext";
 import { ToastProvider } from "@/app/context/ToastContext";
-import { SITE_DESCRIPTION } from "@/shared/site";
+import { SITE_DESCRIPTION } from "@/app/components/shared/site";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://lootlocker.netlify.app";

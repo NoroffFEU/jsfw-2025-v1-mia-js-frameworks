@@ -6,10 +6,10 @@ import {
   isContactFormValid,
   type ContactFormValues,
   type ContactFieldErrors,
-} from "@/shared/contactValidation";
+} from "@/app/services/contactValidation";
 import ContactFormField, {
-  contactInputClass,
-  contactTextareaClass,
+  contactInputClassForError,
+  contactTextareaClassForError,
 } from "@/app/components/ContactFormField";
 
 const initialValues: ContactFormValues = {
@@ -34,22 +34,23 @@ export default function ContactPage() {
     }
     setSubmitted(true);
     setValues(initialValues);
+    setErrors({});
   }
 
-  function clearFieldError(field: keyof ContactFormValues) {
-    setErrors((prev) => {
-      const rest = { ...prev };
-      delete rest[field];
-      return rest;
+  function handleFieldChange<K extends keyof ContactFormValues>(
+    field: K,
+    value: ContactFormValues[K],
+  ) {
+    setValues((v) => {
+      const next = { ...v, [field]: value };
+      setErrors(validateContactForm(next));
+      return next;
     });
   }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <h1
-        className="text-3xl font-heading font-bold text-(--text)"
-
-      >
+      <h1 className="text-3xl font-heading font-bold text-(--text)">
         Contact us
       </h1>
       <p className="text-(--text-muted) mt-2">
@@ -95,12 +96,11 @@ export default function ContactPage() {
             autoComplete="name"
             value={values.fullName}
             onChange={(e) => {
-              setValues((v) => ({ ...v, fullName: e.target.value }));
-              clearFieldError("fullName");
+              handleFieldChange("fullName", e.target.value);
             }}
             aria-invalid={Boolean(errors.fullName)}
             aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            className={contactInputClass}
+            className={contactInputClassForError(Boolean(errors.fullName))}
           />
         </ContactFormField>
 
@@ -111,12 +111,11 @@ export default function ContactPage() {
             type="text"
             value={values.subject}
             onChange={(e) => {
-              setValues((v) => ({ ...v, subject: e.target.value }));
-              clearFieldError("subject");
+              handleFieldChange("subject", e.target.value);
             }}
             aria-invalid={Boolean(errors.subject)}
             aria-describedby={errors.subject ? "subject-error" : undefined}
-            className={contactInputClass}
+            className={contactInputClassForError(Boolean(errors.subject))}
           />
         </ContactFormField>
 
@@ -128,12 +127,11 @@ export default function ContactPage() {
             autoComplete="email"
             value={values.email}
             onChange={(e) => {
-              setValues((v) => ({ ...v, email: e.target.value }));
-              clearFieldError("email");
+              handleFieldChange("email", e.target.value);
             }}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className={contactInputClass}
+            className={contactInputClassForError(Boolean(errors.email))}
           />
         </ContactFormField>
 
@@ -144,12 +142,11 @@ export default function ContactPage() {
             rows={5}
             value={values.message}
             onChange={(e) => {
-              setValues((v) => ({ ...v, message: e.target.value }));
-              clearFieldError("message");
+              handleFieldChange("message", e.target.value);
             }}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? "message-error" : undefined}
-            className={contactTextareaClass}
+            className={contactTextareaClassForError(Boolean(errors.message))}
           />
         </ContactFormField>
 

@@ -14,7 +14,7 @@ If you’re grading this or just trying to run it locally, everything you need s
 - **Product pages** — Dynamic routes under `/product/[id]` with images (via `next/image`), optional reviews, tags, and sale pricing when the API provides a `discountedPrice`.
 - **Cart** — Client-side cart with quantities, line totals, savings when something’s on sale, and persistence in `localStorage` so a refresh doesn’t wipe the basket.
 - **Checkout** — The checkout button goes to `/checkout/success`, which shows a confirmation and clears the cart. There’s no payment provider; it’s a deliberate flow for the assignment.
-- **Contact** — Full name, subject, email, and message with validation rules in `shared/contactValidation.ts`, plus a short success modal when the form passes validation.
+- **Contact** — Full name, subject, email, and message with validation rules in `app/services/contactValidation.ts`, plus a short success modal when the form passes validation.
 
 The UI uses a custom theme in `app/globals.css` (CSS variables), **Geist** and **Bitter** from `next/font`, and **Tailwind CSS v4** for layout and utilities. The header includes a responsive menu, skip link, and cart badge.
 
@@ -28,7 +28,7 @@ The UI uses a custom theme in `app/globals.css` (CSS variables), **Geist** and *
 | Tailwind CSS 4 | PostCSS pipeline                         |
 | ESLint       | `eslint-config-next` (core-web-vitals + TypeScript) |
 
-Product fetches use React `cache()` and Next’s `fetch` with a **60 second** revalidation window (`shared/api.ts`).
+Product fetches use React `cache()` and Next’s `fetch` with a **60 second** revalidation window (`app/api/api.ts`).
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ Then open [http://localhost:3000](http://localhost:3000). Use `npm run build` an
 
 ## Environment variables
 
-All of these are optional. If you skip them, the app falls back to sensible defaults (see `shared/api.ts` and `app/layout.tsx`).
+All of these are optional. If you skip them, the app falls back to sensible defaults (see `app/api/api.ts` and `app/layout.tsx`).
 
 | Variable              | Purpose |
 | --------------------- | ------- |
@@ -69,7 +69,9 @@ Create a `.env.local` in the project root if you need to override them (see Next
 ## Project layout (short tour)
 
 - `app/` — Routes, layouts, global styles, and React contexts (`Cart`, `Toast`).
-- `shared/` — Types, API helpers, pricing helpers, contact validation, and small shared UI strings/classes.
+- `app/api/api.ts` — Noroff shop fetch helpers (`GET /online-shop` and `/online-shop/:id`).
+- `app/components/shared/` — Types, pricing/format helpers, site copy, and shared UI class strings.
+- `app/services/` — Contact form validation.
 - `public/` — Static assets served from `/`.
 
 Remote product images are allowed for `**.noroff.dev` in `next.config.ts`.

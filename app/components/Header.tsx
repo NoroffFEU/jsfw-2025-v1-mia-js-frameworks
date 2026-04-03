@@ -24,7 +24,6 @@ function IconHome() {
   );
 }
 
-
 function IconEnvelope() {
   return (
     <svg
@@ -96,6 +95,41 @@ export default function Header() {
             />
           </Link>
 
+          <div className="header-trailing">
+            <Link
+              href="/cart"
+              className={`header-cart-mobile${pathname === "/cart" ? " header-cart-mobile-active" : ""}`}
+              onClick={closeMenu}
+              aria-label={
+                itemCount > 0 ? `Cart, ${itemCount} items` : "Cart, empty"
+              }
+            >
+              <span className="header-cart-mobile-icon" aria-hidden>
+                <IconCart />
+              </span>
+              {itemCount > 0 && (
+                <span className="nav-cart-badge header-cart-mobile-badge">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
+
+            <button
+              type="button"
+              className="hamburger-btn"
+              aria-expanded={menuOpen}
+              aria-controls="main-nav"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              <span className="hamburger-icon" aria-hidden="true">
+                <span className="hamburger-line" />
+                <span className="hamburger-line" />
+                <span className="hamburger-line" />
+              </span>
+            </button>
+          </div>
+
           <div id="main-nav" className="header-center">
             <nav className="nav" aria-label="Main navigation">
               <ul className="nav-list" role="list">
@@ -157,21 +191,6 @@ export default function Header() {
 
             <div className="nav-divider" aria-hidden="true" />
           </div>
-
-          <button
-            type="button"
-            className="hamburger-btn"
-            aria-expanded={menuOpen}
-            aria-controls="main-nav"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            <span className="hamburger-icon" aria-hidden="true">
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
-            </span>
-          </button>
         </div>
       </header>
     </>

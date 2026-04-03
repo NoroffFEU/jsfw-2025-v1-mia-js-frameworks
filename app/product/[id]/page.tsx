@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { fetchProductById } from "@/shared/api";
-import { ApiError, type Product } from "@/shared/types";
-import { formatStarRating } from "@/shared/format";
-import { productDiscountPercent } from "@/shared/productPricing";
-import { SITE_DESCRIPTION } from "@/shared/site";
-import { primaryButtonClass, primaryLinkButtonClass } from "@/shared/uiClasses";
+import { fetchProductById } from "@/app/api/api";
+import { ApiError, type Product } from "@/app/components/shared/types";
+import { formatStarRating } from "@/app/components/shared/format";
+import { productDiscountPercent } from "@/app/components/shared/productPricing";
+import { SITE_DESCRIPTION } from "@/app/components/shared/site";
+import {
+  primaryButtonClass,
+  primaryLinkButtonClass,
+} from "@/app/components/shared/uiClasses";
 import AddToCartButton from "@/app/components/AddToCartButton";
 import DiscountBadge from "@/app/components/DiscountBadge";
 import ProductImagePlaceholder from "@/app/components/ProductImagePlaceholder";
@@ -42,19 +45,16 @@ export default async function ProductPage({ params }: Props) {
   try {
     product = await fetchProductById(id);
   } catch (e) {
-  if (e instanceof ApiError && e.status === 404) notFound();
-  if (!(e instanceof ApiError)) {
-    console.error("Unexpected error loading product", e);
-  }
+    if (e instanceof ApiError && e.status === 404) notFound();
+    if (!(e instanceof ApiError)) {
+      console.error("Unexpected error loading product", e);
+    }
     return (
       <div className="max-w-6xl mx-auto px-4 py-12">
         <p className="text-(--text-muted)">
           We couldn&apos;t load this product. Please try again later.
         </p>
-        <Link
-          href="/"
-          className="mt-4 inline-block text-(--accent) underline"
-        >
+        <Link href="/" className="mt-4 inline-block text-(--accent) underline">
           Back to shop
         </Link>
       </div>
@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <article className="max-w-6xl mx-auto px-4 py-12">
       <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-        <div className="relative aspect-square w-full max-w-xl bg-(--border)">
+        <div className="relative aspect-square w-full max-w-xl bg-(--border) border border-(--border) rounded-lg">
           {product.image?.url ? (
             <Image
               src={product.image.url}
@@ -87,14 +87,15 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         <div>
-          <h1
-            className="text-3xl font-bold text-(--text) md:text-4xl font-heading"
-
-          >
+          <h1 className="text-3xl font-bold text-(--text) md:text-4xl font-heading">
             {product.title}
           </h1>
 
-          <ProductPriceRow product={product} variant="detail" className="mt-4" />
+          <ProductPriceRow
+            product={product}
+            variant="detail"
+            className="mt-4"
+          />
 
           {product.description?.trim() && (
             <p className="mt-6 text-(--text-muted) leading-relaxed whitespace-pre-wrap">
@@ -123,10 +124,7 @@ export default async function ProductPage({ params }: Props) {
 
       {product.reviews && product.reviews.length > 0 && (
         <section className="mt-12 border-t border-(--border) pt-10">
-          <h2
-            className="text-xl font-bold text-(--text) font-heading"
-
-          >
+          <h2 className="text-xl font-bold text-(--text) font-heading">
             Reviews
           </h2>
           <ul className="mt-4 space-y-4" role="list">

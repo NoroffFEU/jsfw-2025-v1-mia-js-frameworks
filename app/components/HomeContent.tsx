@@ -9,15 +9,14 @@ export default function HomeContent({ children }: HomeContentProps) {
         className="border-b-2 border-(--border) bg-(--bg-card)"
         aria-labelledby="home-heading"
       >
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto px-4 py-2">
           <h1
             id="home-heading"
-            className="text-3xl font-bold text-(--text) font-heading"
-
+            className=" text-(--text-muted) text-1xl font-bold font-heading"
           >
-            Loot Locker
+            Browse what we have to offer
           </h1>
-          <p className="text-(--text-muted) mt-1">Browse what we have.</p>
+
         </div>
       </section>
       {children}
