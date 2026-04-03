@@ -1,5 +1,7 @@
 # Loot Locker
 
+**Live site:** [https://lootlocker.netlify.app/](https://lootlocker.netlify.app/)
+
 ![Loot Locker — home page](app/docs/frontpage.png)
 
 A small storefront built for a JavaScript frameworks assignment. It pulls products from the Noroff public API, lets people browse and sort them, add items to a cart, and walk through a simple “checkout” that ends on a thank-you page. There’s also a contact form with client-side validation—handy for demonstrating form handling without wiring up a real mail server.

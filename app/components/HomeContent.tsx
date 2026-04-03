@@ -12,11 +12,10 @@ export default function HomeContent({ children }: HomeContentProps) {
         <div className="max-w-6xl mx-auto px-4 py-2">
           <h1
             id="home-heading"
-            className=" text-(--text-muted) text-1xl font-bold font-heading"
+            className=" text-(--text-muted) font-bold font-heading"
           >
             Browse what we have to offer
           </h1>
-
         </div>
       </section>
       {children}

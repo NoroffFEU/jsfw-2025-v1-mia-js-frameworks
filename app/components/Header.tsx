@@ -92,7 +92,7 @@ export default function Header() {
               closeMenu();
               if (pathname === "/") {
                 e.preventDefault();
-                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 router.refresh();
               }
             }}
