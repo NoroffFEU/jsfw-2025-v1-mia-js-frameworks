@@ -1,8 +1,5 @@
 import type { Product } from "./types";
 
-/**
- * Shows is there are discount
- */
 function activeDiscountedUnitPrice(product: Product): number | undefined {
   const d = product.discountedPrice;
   if (d == null || d >= product.price) return undefined;

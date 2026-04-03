@@ -16,17 +16,11 @@ I’m not trying to outsource the course. I run the app, I read what it suggests
 
 ## How I try to work with it
 
-I’ve landed on a few habits that keep things honest and useful. I give real context: which file, what I tried, what I thought would happen vs what actually happened. If I need to present or defend the work, I ask *why*, not only “make it work.” I keep asks small — one screen or one bug — unless the whole file really is the question. I always run `npm run dev` and click through the flows myself; the assignment has to work for me, not just on paper. And I don’t dump big generated blocks into the repo — I implement bit by bit so I know what’s going on.
+I’ve landed on a few habits that keep things honest and useful. I give real context: which file, what I tried, what I thought would happen vs what actually happened. If I need to present or defend the work, I ask _why_, not only “make it work.” I keep asks small — one screen or one bug — unless the whole file really is the question. I always run `npm run dev` and click through the flows myself; the assignment has to work for me, not just on paper. And I don’t dump big generated blocks into the repo — I implement bit by bit so I know what’s going on.
 
 ---
 
 ## Example prompts (the kind of thing I actually type)
-
-**Concept stuff**
-
-> Can you explain server vs client components in plain language for *this* Next.js app, and where my cart page fits? Short answer, and tell me which files are worth opening.
-
-I’m asking for understanding tied to my repo, not a rewrite of my project.
 
 **Debugging**
 
@@ -44,7 +38,19 @@ I want trade-offs I can explain later, not a single “correct” answer copied 
 
 > In `ProductGrid.tsx`, can we show loading while the filter runs, without touching the API, and using the same CSS variables as in `globals.css`?
 
-File, behaviour, and what *not* to change — that keeps the answer usable.
+File, behaviour, and what _not_ to change — that keeps the answer usable.
+
+**Walking through one file**
+
+> I’m reading `CartContext.tsx` and I’m fuzzy on the order things happen — when does state update, and why does the cart still exist after I refresh? Talk me through it step by step in simple terms; don’t rewrite my code.
+
+I point at a real file and ask for a timeline, not a refactor, so the explanation stays grounded in what I actually shipped.
+
+**Commit messages**
+
+> Here’s my `git diff` / what I changed: [summary]. Can you suggest a commit message that matches it — short title, optional body — so my history reflects what I really did?
+
+The goal is a truthful summary I can stand behind, not fancy wording for work I didn’t do.
 
 ---
 
@@ -56,8 +62,8 @@ I read the assignment brief and the rubric — AI doesn’t replace that. The ov
 
 ## In short
 
-AI is more like a tutor or someone pair-programming with me: questions, debugging, and ideas in small pieces. It’s not a place I go to download a finished solution and paste it in. I write my own code, I need to understand what ships, and I’m responsible for what I submit.
+AI is more like a tutor or someone pair-programming with me: questions, debugging, and ideas in small pieces. It’s not a place I go to download a finished solution and paste it in. I write my own code, I want to understand what ships, and I’m responsible for what I submit.
 
 ---
 
-*April 2026*
+_April 2026_

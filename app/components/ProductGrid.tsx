@@ -93,9 +93,9 @@ function sortProducts(list: Product[], key: SortKey): Product[] {
         const pa = productDiscountPercent(a);
         const pb = productDiscountPercent(b);
         if (pa == null && pb == null) return 0;
-        if (pa == null) return 1; // a without discount → lower
-        if (pb == null) return -1; // b without discount → lower
-        return pb - pa; // larger % off first
+        if (pa == null) return 1;
+        if (pb == null) return -1;
+        return pb - pa;
       });
     default:
       return copy;
