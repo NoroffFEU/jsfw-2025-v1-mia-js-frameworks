@@ -10,22 +10,32 @@ import {
   type ReactNode,
 } from "react";
 
+export type ToastVariant = "success" | "danger";
+
 export interface ToastItem {
   id: string;
   message: string;
+  variant: ToastVariant;
 }
 
 interface ToastContextValue {
-  showToast: (message: string) => void;
+  showToast: (message: string, variant?: ToastVariant) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | undefined>(undefined);
+
+const toastCardClass: Record<ToastVariant, string> = {
+  success:
+    "border-2 border-(--border-success) bg-(--bg-success) text-(--text-success)",
+  danger:
+    "border-2 border-(--border-danger) bg-(--bg-danger) text-(--text-danger)",
+};
 
 function ToastHost({ toasts }: { toasts: ToastItem[] }) {
   if (!toasts.length) return null;
   return (
     <div
-      className="fixed bottom-4 right-4 z-[1000] flex max-w-sm flex-col gap-2 bg(--bg-success)"
+      className="fixed bottom-4 right-4 z-[1000] flex max-w-sm flex-col gap-2"
       role="region"
       aria-live="polite"
       aria-label="Notifications"
@@ -33,7 +43,7 @@ function ToastHost({ toasts }: { toasts: ToastItem[] }) {
       {toasts.map((t) => (
         <div
           key={t.id}
-          className="border-2 border-(--border) bg-(--bg-success) px-4 py-3 text-(--text-success) shadow-lg"
+          className={`px-4 py-3 shadow-lg ${toastCardClass[t.variant]}`}
         >
           {t.message}
         </div>
@@ -46,14 +56,17 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idRef = useRef(0);
 
-  const showToast = useCallback((message: string) => {
-    idRef.current += 1;
-    const id = `toast-${idRef.current}`;
-    setToasts((t) => [...t, { id, message }]);
-    window.setTimeout(() => {
-      setToasts((t) => t.filter((x) => x.id !== id));
-    }, 3000);
-  }, []);
+  const showToast = useCallback(
+    (message: string, variant: ToastVariant = "success") => {
+      idRef.current += 1;
+      const id = `toast-${idRef.current}`;
+      setToasts((t) => [...t, { id, message, variant }]);
+      window.setTimeout(() => {
+        setToasts((t) => t.filter((x) => x.id !== id));
+      }, 3000);
+    },
+    [],
+  );
 
   const value = useMemo(() => ({ showToast }), [showToast]);
 

@@ -171,7 +171,7 @@ export default function CartPage() {
                     className="shrink-0 text-(--accent) underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)"
                     onClick={() => {
                       removeLine(line.id);
-                      showToast(`Removed ${line.title} from cart`);
+                      showToast(`Removed ${line.title} from cart`, "danger");
                     }}
                   >
                     Remove
