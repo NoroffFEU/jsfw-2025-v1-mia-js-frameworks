@@ -11,6 +11,9 @@
   --bg-success: #e6f4ea;
   --border-success: #a8d4b8;
   --text-success: #1a472a;
+  --bg-danger: #fde8ec;
+  --border-danger: #e0a0ae;
+  --text-danger: #6b1a2c;
 }
 @theme inline {
   --color-background: var(--bg);

@@ -2,8 +2,6 @@
 
 ![Loot Locker — home page](app/docs/frontpage.png)
 
-A small storefront built for a JavaScript frameworks assignment.
-
 A small storefront built for a JavaScript frameworks assignment. It pulls products from the Noroff public API, lets people browse and sort them, add items to a cart, and walk through a simple “checkout” that ends on a thank-you page. There’s also a contact form with client-side validation—handy for demonstrating form handling without wiring up a real mail server.
 
 If you’re grading this or just trying to run it locally, everything you need should be below.
@@ -12,7 +10,7 @@ If you’re grading this or just trying to run it locally, everything you need s
 
 - **Home** — Product grid fed by `GET /online-shop`, with search (including a shortcut to surface discounted items when you type things like “sale” or “discount”), plus sorting by name, price, rating, and discount.
 - **Product pages** — Dynamic routes under `/product/[id]` with images (via `next/image`), optional reviews, tags, and sale pricing when the API provides a `discountedPrice`.
-- **Cart** — Client-side cart with quantities, line totals, savings when something’s on sale, and persistence in `localStorage` so a refresh doesn’t wipe the basket.
+- **Cart** — Client-side cart with quantities, line totals, savings when something’s on sale, and persistence in `localStorage` so a refresh doesn’t wipe the basket. Toasts confirm adding an item, clearing the cart, and removing a line.
 - **Checkout** — The checkout button goes to `/checkout/success`, which shows a confirmation and clears the cart. There’s no payment provider; it’s a deliberate flow for the assignment.
 - **Contact** — Full name, subject, email, and message with validation rules in `app/services/contactValidation.ts`, plus a short success modal when the form passes validation.
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useCallback, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 
@@ -62,6 +62,7 @@ function IconCart() {
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
@@ -84,7 +85,18 @@ export default function Header() {
 
       <header className={`header ${menuOpen ? "menu-open" : ""}`} role="banner">
         <div className="header-inner">
-          <Link href="/" className="logo-block" onClick={closeMenu}>
+          <Link
+            href="/"
+            className="logo-block"
+            onClick={(e) => {
+              closeMenu();
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                router.refresh();
+              }
+            }}
+          >
             <Image
               src="/lightLogo.png"
               alt="Loot Locker — online store"
