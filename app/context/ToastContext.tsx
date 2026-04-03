@@ -25,7 +25,7 @@ function ToastHost({ toasts }: { toasts: ToastItem[] }) {
   if (!toasts.length) return null;
   return (
     <div
-      className="fixed bottom-4 right-4 z-[1000] flex max-w-sm flex-col gap-2"
+      className="fixed bottom-4 right-4 z-[1000] flex max-w-sm flex-col gap-2 bg(--bg-success)"
       role="region"
       aria-live="polite"
       aria-label="Notifications"
@@ -33,7 +33,7 @@ function ToastHost({ toasts }: { toasts: ToastItem[] }) {
       {toasts.map((t) => (
         <div
           key={t.id}
-          className="border-2 border-(--border) bg-(--bg-card) px-4 py-3 text-(--text) shadow-lg"
+          className="border-2 border-(--border) bg-(--bg-success) px-4 py-3 text-(--text-success) shadow-lg"
         >
           {t.message}
         </div>

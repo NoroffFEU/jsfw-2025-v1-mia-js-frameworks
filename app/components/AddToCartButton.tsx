@@ -1,9 +1,9 @@
 "use client";
 
-import type { Product } from "@/shared/types";
+import type { Product } from "@/app/components/shared/types";
 import { useCart } from "@/app/context/CartContext";
 import { useToast } from "@/app/context/ToastContext";
-import { productEffectiveUnitPrice } from "@/shared/productPricing";
+import { productEffectiveUnitPrice } from "@/app/components/shared/productPricing";
 
 const defaultButtonClass =
   "shrink-0 self-center px-3 py-1.5 bg-(--accent) text-white text-xs font-semibold border-2 border-(--accent) transition-colors hover:bg-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text)";
@@ -32,7 +32,7 @@ export default function AddToCartButton({
           unitPrice,
           listPrice: product.price,
         });
-        showToast(`Added ${product.title} to cart`);
+        showToast(`Successfully added ${product.title} to your cart`);
       }}
       className={className}
     >

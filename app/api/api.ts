@@ -4,7 +4,7 @@ import {
   ProductResponse,
   SingleProductResponse,
   ApiError,
-} from "./types";
+} from "../components/shared/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://v2.api.noroff.dev";
 
@@ -39,4 +39,3 @@ export const fetchProductById = cache(async (id: string): Promise<Product> => {
   const response = await fetchApi<SingleProductResponse>(`/online-shop/${id}`);
   return response.data;
 });
-

@@ -1,7 +1,7 @@
-import { fetchProducts } from "@/shared/api";
+import { fetchProducts } from "@/app/api/api";
 import HomeContent from "@/app/components/HomeContent";
 import ProductGrid from "@/app/components/ProductGrid";
-import { ApiError } from "@/shared/types";
+import { ApiError } from "@/app/components/shared/types";
 
 export default async function HomePage() {
   let products: Awaited<ReturnType<typeof fetchProducts>> = [];
