@@ -3,10 +3,9 @@ export function formatKr(n: number): string {
 }
 
 export function formatStarRating(rating: number): string {
-  const r = Math.min(5, Math.max(0, Math.round(rating * 2) / 2));
+  const r = Math.min(5, Math.max(0, rating));
   const full = Math.floor(r);
-  const half = r % 1 === 0.5;
-  const empty = 5 - full - (half ? 1 : 0);
-  const stars = "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
+  const empty = 5 - full;
+  const stars = "★".repeat(full) + "☆".repeat(empty);
   return `${stars} ${rating.toFixed(1)}`;
 }
