@@ -26,13 +26,13 @@ The UI uses a custom theme in `app/globals.css` (CSS variables), **Geist** and *
 
 ## Tech stack
 
-| Piece        | Notes                                      |
-| ------------ | ------------------------------------------ |
-| Next.js 16   | App Router, server components where it fits |
-| React 19     | Client components for interactivity        |
-| TypeScript   | Strict mode                                |
-| Tailwind CSS 4 | PostCSS pipeline                         |
-| ESLint       | `eslint-config-next` (core-web-vitals + TypeScript) |
+| Piece          | Notes                                               |
+| -------------- | --------------------------------------------------- |
+| Next.js 16     | App Router, server components where it fits         |
+| React 19       | Client components for interactivity                 |
+| TypeScript     | Strict mode                                         |
+| Tailwind CSS 4 | PostCSS pipeline                                    |
+| ESLint         | `eslint-config-next` (core-web-vitals + TypeScript) |
 
 Product fetches use React `cache()` and Next’s `fetch` with a **60 second** revalidation window (`app/api/api.ts`).
 
@@ -44,7 +44,7 @@ Product fetches use React `cache()` and Next’s `fetch` with a **60 second** re
 ## Getting started
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/NoroffFEU/jsfw-2025-v1-mia-js-frameworks.git
 cd jsfw-2025-v1-mia-js-frameworks
 npm install
 npm run dev
@@ -54,20 +54,20 @@ Then open [http://localhost:3000](http://localhost:3000). Use `npm run build` an
 
 ## Scripts
 
-| Command       | Purpose                |
-| ------------- | ---------------------- |
-| `npm run dev` | Dev server (Next.js)   |
-| `npm run build` | Production build     |
+| Command         | Purpose               |
+| --------------- | --------------------- |
+| `npm run dev`   | Dev server (Next.js)  |
+| `npm run build` | Production build      |
 | `npm run start` | Run production server |
-| `npm run lint`  | ESLint                 |
+| `npm run lint`  | ESLint                |
 
 ## Environment variables
 
 All of these are optional. If you skip them, the app falls back to sensible defaults (see `app/api/api.ts` and `app/layout.tsx`).
 
-| Variable              | Purpose |
-| --------------------- | ------- |
-| `NEXT_PUBLIC_API_URL` | Base URL for the Noroff API (default: `https://v2.api.noroff.dev`) |
+| Variable               | Purpose                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_API_URL`  | Base URL for the Noroff API (default: `https://v2.api.noroff.dev`)                         |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL for metadata (`metadataBase`; default points at a Netlify-style deploy) |
 
 Create a `.env.local` in the project root if you need to override them (see Next.js docs for loading order).
